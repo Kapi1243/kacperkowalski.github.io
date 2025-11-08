@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="description" name="description">
+  <meta content="Q-Learning implementation for Snake game with 8-bit state encoding, achieving 33.20 average score and 24.2% board coverage" name="description">
   <meta name="google" content="notranslate" />
   <meta content="Mashup templates have been developed by Orson.io team" name="author">
 
@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
   <link href="./assets/favicon.ico" rel="icon">
 
-  <title>Title page</title>
+  <title>Reinforcement Learning Snake Game - Kacper Kowalski</title>
   <link href="./main.d8e0d294.css" rel="stylesheet">
 </head>
 
@@ -29,21 +29,122 @@
     </header>
 
     <div class="card white-card">
-      <img src="./assets/images/img-02.jpg" alt="Snake Game AI playing" class="project-img">
+      <img src="./assets/images/img-02.jpg" alt="Reinforcement learning snake game demonstration" class="project-img">
     </div>
 
     <div class="card">
       <div class="card-block">
         <h2 style="color: black; text-align: center;">About the Project</h2>
-        <h4 class="h5">Technologies: Python, Reinforcement Learning, Neural Networks</h4>
-        <p>Creating the Reinforcement Learning Snake Game was an exciting project that involved applying cutting-edge machine learning techniques to a classic game. At the core of this game is Deep Q-Learning, a reinforcement learning algorithm that enables the AI to learn optimal strategies through trial and error. Initially, the AI starts by randomly making moves, but as it plays more games, it begins to learn the most efficient actions to take in order to maximize its score and survival time. The game environment is designed to simulate the classic Snake game mechanics, where the AI controls a snake that must eat food to grow longer while avoiding collisions with walls and itself. The AI uses a deep neural network to evaluate the state of the game, making decisions based on the current position of the snake, the location of food, and the surrounding obstacles. The model is trained over many iterations, adjusting its behavior based on the rewards and penalties it receives, ultimately leading to more efficient gameplay. The result is a dynamic and evolving game where the AI continuously improves its ability to navigate the environment, demonstrating the potential of reinforcement learning in real-world applications. This project not only showcases the power of AI but also highlights the exciting possibilities for the future of gaming.</p>
+        <h4 class="h5">Technologies: Python, Q-Learning, Reinforcement Learning, NumPy</h4>
+        
+        <p style="text-align: center; margin-bottom: 20px;">
+          <a href="https://github.com/Kapi1243/snake-reinforcement-learning" class="btn btn-primary" target="_blank">
+            <i class="fa fa-github"></i> View Code on GitHub
+          </a>
+        </p>
+
+        <h4 class="h5">🎯 Project Overview:</h4>
+        <p>A modern implementation of Q-Learning applied to the classic Snake game. This project demonstrates fundamental reinforcement learning concepts using a custom-built environment and tabular Q-learning agent. The agent learns to play Snake through reinforcement learning without any hardcoded game strategy, developing an optimal policy purely from experience using rewards and penalties.</p>
+
+        <h4 class="h5">📊 Performance Metrics:</h4>
+        <ul>
+          <li><strong>Best Average Score:</strong> 33.20 over evaluation episodes</li>
+          <li><strong>Best Single Score:</strong> 62 (24.2% board coverage on 16×16 grid)</li>
+          <li><strong>Training Episodes:</strong> ~15,700 (with early stopping)</li>
+          <li><strong>State Space:</strong> 256 discrete states (8-bit binary encoding)</li>
+          <li><strong>Board Size:</strong> 16×16 grid (256 squares total)</li>
+        </ul>
+
+        <h4 class="h5">✨ Key Features:</h4>
+        <ul>
+          <li><strong>Custom Snake Environment:</strong> Grid-based game implementation optimized for RL</li>
+          <li><strong>Tabular Q-Learning:</strong> Incremental updates with epsilon decay (ε: 0.2 → 0.05)</li>
+          <li><strong>Efficient State Representation:</strong> 8-dimensional binary encoding
+            <ul>
+              <li>Bits 0-3: Obstacle detection (↑ → ↓ ←)</li>
+              <li>Bits 4-7: Food direction (↑ → ↓ ←)</li>
+            </ul>
+          </li>
+          <li><strong>Length-Based Rewards:</strong> Scaled rewards encouraging longer survival (+10.0 + length × 0.5 for food)</li>
+          <li><strong>Early Stopping:</strong> Automatic training termination when performance plateaus</li>
+          <li><strong>Training Visualization:</strong> Auto-generated performance curves and convergence graphs</li>
+          <li><strong>Model Persistence:</strong> Save and load trained Q-tables</li>
+          <li><strong>Type Hints & Documentation:</strong> Production-quality code standards</li>
+        </ul>
+
+        <h4 class="h5">🧠 How It Works:</h4>
+        <p><strong>Q-Learning Algorithm:</strong></p>
+        <p>The agent uses the incremental Q-learning update rule: Q(s, a) ← Q(s, a) + α · [r + γ · max[Q(s', a')] - Q(s, a)]</p>
+        <ul>
+          <li><strong>Learning Rate (α):</strong> 0.1</li>
+          <li><strong>Discount Factor (γ):</strong> 0.9</li>
+          <li><strong>Epsilon Decay:</strong> 0.9995 per episode</li>
+        </ul>
+
+        <p><strong>Reward Structure:</strong></p>
+        <ul>
+          <li>Eating food: +10.0 + (length × 0.5)</li>
+          <li>Moving toward food: +1.1</li>
+          <li>Survival (each step): +0.1</li>
+          <li>Collision (death): -10</li>
+        </ul>
+
+        <h4 class="h5">🔧 Technical Implementation:</h4>
+        <ul>
+          <li><strong>State Encoding:</strong> Compact 8-bit binary representation allows 2^8 = 256 states, making tabular Q-learning feasible</li>
+          <li><strong>Action Space:</strong> 4 discrete actions (up, right, down, left)</li>
+          <li><strong>Environment Design:</strong> Custom Snake.py with Markov Decision Process (MDP) structure</li>
+          <li><strong>Training Pipeline:</strong> QLearningAgent.py with configurable hyperparameters</li>
+          <li><strong>Visualization Tools:</strong> Performance curves, Q-value convergence plots, animated training GIFs</li>
+        </ul>
+
+        <h4 class="h5">🚀 Usage Examples:</h4>
+        <p><strong>Train a new agent:</strong></p>
+        <code style="background: #f4f4f4; padding: 10px; display: block; margin: 10px 0;">python src/QLearningAgent.py</code>
+        
+        <p><strong>Use pre-trained model:</strong></p>
+        <code style="background: #f4f4f4; padding: 10px; display: block; margin: 10px 0;">
+from src.QLearningAgent import QLearningAgent<br>
+agent = QLearningAgent()<br>
+agent.load('models/q_learning_snake.pkl')<br>
+avg_score, scores = agent.evaluate(board_size=16, num_episodes=100)
+        </code>
+
+        <h4 class="h5">💡 Challenges & Solutions:</h4>
+        <ul>
+          <li><strong>State Space Explosion:</strong> A naive state representation would result in millions of states. Solved by designing an efficient 8-bit binary encoding that captures only essential information (obstacle detection + food direction), reducing to just 256 states.</li>
+          <li><strong>Sparse Rewards:</strong> Early training showed slow learning due to infrequent food encounters. Solved by implementing a multi-tier reward structure: small positive reward (+1.1) for moving toward food, survival bonus (+0.1 per step), and length-scaled food reward (+10.0 + length × 0.5).</li>
+          <li><strong>Exploration vs. Exploitation:</strong> Agent got stuck in local optima with fixed epsilon. Solved by implementing epsilon decay (0.9995 per episode) from 0.2 to 0.05, allowing high initial exploration that gradually shifts to exploitation of learned policy.</li>
+          <li><strong>Training Efficiency:</strong> Training took excessive time without convergence detection. Solved by implementing early stopping mechanism that monitors average score plateau over 500 episodes, reducing training from potential 20,000+ to ~15,700 episodes.</li>
+        </ul>
+
+        <h4 class="h5">🎓 Learning Outcomes:</h4>
+        <ul>
+          <li>Markov Decision Processes (MDPs) and state-action value functions</li>
+          <li>Q-learning algorithm with temporal difference updates</li>
+          <li>Exploration-exploitation trade-off via epsilon-greedy strategy</li>
+          <li>State space engineering and feature representation</li>
+          <li>Reward shaping for faster convergence</li>
+          <li>Object-oriented Python design with type hints</li>
+          <li>Model persistence and evaluation techniques</li>
+        </ul>
+
+        <h4 class="h5">🔮 Future Improvements:</h4>
+        <ul>
+          <li>Deep Q-Networks (DQN) to handle larger state spaces</li>
+          <li>Double DQN to reduce overestimation bias</li>
+          <li>Dueling DQN with separate value and advantage streams</li>
+          <li>Prioritized Experience Replay for efficient learning</li>
+          <li>Multi-step TD learning (n-step returns)</li>
+          <li>Curriculum learning with gradually increasing board size</li>
+        </ul>
       </div>
     </div>
 
     <div class="card white-card">
-      <img src="./assets/images/snakegame.png" alt="Snake Game AI playing" class="project-img">
-           <p style="color: black; text-align: center;">This AI-powered Snake game uses Deep Q-Learning to optimize movement and maximize survival.</p>
-      <a href="index.html" class="btn btn-secondary" style= "text-align: center;">Back to Projects</a>
+      <img src="./assets/images/snakegame.png" alt="Q-Learning Snake AI training progress showing performance curves and convergence" class="project-img">
+      <p style="color: black; text-align: center;">Training progress showing the agent's learning curve over ~15,700 episodes with early stopping.</p>
+      <a href="index.html" class="btn btn-secondary" style="text-align: center;">Back to Projects</a>
     </div>
   </main>
 

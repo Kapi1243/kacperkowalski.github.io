@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="Advanced Jet Engine Performance Simulator - Python simulation framework with thermodynamic modeling" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developed by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+
+  <title>Jet Engine Simulator - Kacper Kowalski</title>
+  <link href="./main.d8e0d294.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <main class="content-wrapper">
+    <header class="white-text-container section-container">
+      <div class="text-center">
+        <h1 style="color: white; text-align: center;">Advanced Jet Engine Performance Simulator</h1>
+      </div>
+    </header>
+
+    <div class="card white-card">
+      <img src="./assets/images/img-05.jpg" alt="Jet engine simulator performance visualization" class="project-img">
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black; text-align: center;">About the Project</h2>
+        <h4 class="h5">Technologies: Python, PyQt6, NumPy, Matplotlib, Thermodynamic Modeling</h4>
+        
+        <p style="text-align: center; margin-bottom: 20px;">
+          <a href="https://github.com/Kapi1243/jet_engine_sim" class="btn btn-primary" target="_blank">
+            <i class="fa fa-github"></i> View Code on GitHub
+          </a>
+        </p>
+
+        <h4 class="h5">Key Features:</h4>
+        <ul>
+          <li><strong>High-Fidelity Thermodynamic Modeling:</strong> Real gas properties and ISA atmosphere implementation</li>
+          <li><strong>Dual-Mode Operation:</strong> Standard turbojet and afterburning configurations</li>
+          <li><strong>Component-Level Analysis:</strong> Detailed compressor, combustor, turbine, and nozzle performance</li>
+          <li><strong>Interactive GUI:</strong> Real-time parameter adjustment with PyQt6 interface</li>
+          <li><strong>Multi-Parameter Optimization:</strong> Constraint handling and performance envelope mapping</li>
+          <li><strong>Comprehensive Testing:</strong> >95% code coverage ensuring simulation accuracy</li>
+        </ul>
+
+        <h4 class="h5">Performance Metrics:</h4>
+        <ul>
+          <li><strong>Thrust Analysis:</strong> Net thrust calculations ranging from 78.5 kN (baseline) to 125.3 kN (afterburning)</li>
+          <li><strong>Fuel Efficiency:</strong> TSFC optimization from 16.2 to 15.1 mg/N·s in optimized configuration</li>
+          <li><strong>Overall Efficiency:</strong> Achieved 42.1% thermal efficiency in optimized mode</li>
+          <li><strong>Specific Impulse:</strong> Isp calculations up to 6,756 seconds</li>
+        </ul>
+
+        <h4 class="h5">Project Overview:</h4>
+        <p>This project demonstrates the development of a high-fidelity Python simulation framework for turbojet engines, implementing comprehensive thermodynamic modeling with real-time parameter optimization and interactive visualization. The simulator incorporates the Brayton cycle with real gas effects, variable specific heats, compressible flow dynamics, and component efficiency modeling. The architecture follows clean code principles with full separation of concerns, type safety through comprehensive annotations, and extensive documentation. The project includes a command-line interface for batch processing, an interactive PyQt6 GUI for real-time parameter exploration, and advanced visualization capabilities for performance analysis. Model validation was performed against NASA CEA (Chemical Equilibrium with Applications), GasTurb performance data, and published engine specifications from major manufacturers, ensuring simulation accuracy and reliability.</p>
+        
+        <h4 class="h5">Technical Implementation:</h4>
+        <ul>
+          <li><strong>Core Engine:</strong> Modular thermodynamic simulation with adaptive efficiency modeling for off-design conditions</li>
+          <li><strong>Optimization Engine:</strong> Multi-objective optimization balancing thrust and fuel efficiency</li>
+          <li><strong>Visualization Suite:</strong> Professional-grade plotting with publication-ready performance envelopes</li>
+          <li><strong>Testing Framework:</strong> Comprehensive pytest suite with code coverage analysis</li>
+          <li><strong>Architecture:</strong> Clean separation of simulation engine, GUI, visualization, and CLI interfaces</li>
+          <li><strong>Type Safety:</strong> Full type annotations with mypy static type checking</li>
+        </ul>
+
+        <h4 class="h5">Key Achievements:</h4>
+        <ul>
+          <li><strong>Performance:</strong> Optimized numerical methods enabling real-time simulation</li>
+          <li><strong>Accuracy:</strong> Model validated against industry-standard tools and real engine data</li>
+          <li><strong>Extensibility:</strong> Plugin architecture allowing custom engine configurations</li>
+          <li><strong>Code Quality:</strong> >95% test coverage with comprehensive documentation</li>
+        </ul>
+
+        <h4 class="h5">Challenges & Solutions:</h4>
+        <ul>
+          <li><strong>Thermodynamic Complexity:</strong> Implemented variable specific heat models and real gas effects - Solved by integrating validated NASA thermodynamic tables and polynomial approximations</li>
+          <li><strong>Real-Time Performance:</strong> Needed fast computation for interactive GUI - Solved through optimized numerical methods and efficient caching strategies</li>
+          <li><strong>Model Validation:</strong> Ensuring simulation accuracy - Solved by comprehensive validation against NASA CEA, GasTurb, and manufacturer data</li>
+          <li><strong>User Interface:</strong> Making complex engineering tool accessible - Solved with intuitive PyQt6 GUI providing instant visual feedback</li>
+        </ul>
+
+        <h4 class="h5">Use Cases:</h4>
+        <ul>
+          <li>Aerospace engineering education and gas turbine fundamentals</li>
+          <li>Research & development for rapid prototyping of engine concepts</li>
+          <li>Performance analysis and comparative studies</li>
+          <li>Demonstrating technical depth for graduate positions</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card white-card">
+      <p style="color: black; text-align: center; font-style: italic;">Performance visualization screenshots coming soon</p>
+      <a href="index.html" class="btn btn-secondary" style="text-align: center;">Back to Projects</a>
+    </div>
+  </main>
+
+</body>
+
+</html>
