@@ -47,11 +47,11 @@
         <!-- TODO: Fill in your actual metrics below -->
         <h4 class="h5">Key Results:</h4>
         <ul>
-          <li><strong>Model Accuracy:</strong> Achieved [XX%] accuracy on test dataset</li>
-          <li><strong>AUC Score:</strong> [0.XX] area under the ROC curve</li>
-          <li><strong>Precision/Recall:</strong> Precision: [XX%], Recall: [XX%]</li>
-          <li><strong>Dataset Size:</strong> [X,XXX] samples with [XX] features</li>
-          <li><strong>Best Model:</strong> [Decision Tree/Logistic Regression/etc.] outperformed other algorithms</li>
+          <li><strong>Model Accuracy:</strong> Achieved 88.2% accuracy on test dataset</li>
+          <li><strong>AUC Score:</strong> 94.6% area under the ROC curve</li>
+          <li><strong>Precision/Recall:</strong> Precision: 89.9%, Recall: 86.1%</li>
+          <li><strong>Dataset Size:</strong> 445,132 samples with 40 features</li>
+          <li><strong>Best Model:</strong> Random Forest outperformed other algorithms</li>
         </ul>
 
         <h4 class="h5">Project Overview:</h4>
@@ -60,19 +60,18 @@
         <!-- TODO: Add technical details -->
         <h4 class="h5">Technical Details:</h4>
         <ul>
-          <li><strong>Data Preprocessing:</strong> [Describe what you did - handling missing values, feature scaling, etc.]</li>
+          <li><strong>Data Preprocessing:</strong> Applied preprocessing using a ColumnTransformer to handle both numerical and categorical data. Numerical features were imputed with the mean, while categorical features were imputed with the most frequent value and encoded using one-hot encoding.</li>
           <li><strong>Feature Engineering:</strong> [Any features you created or selected]</li>
-          <li><strong>Model Selection:</strong> Compared [X] different algorithms including [list them]</li>
-          <li><strong>Validation Method:</strong> [K-fold cross-validation, train-test split ratio, etc.]</li>
-          <li><strong>Key Features:</strong> Most important features were [list top 3-5]</li>
+          <li><strong>Model Selection:</strong> Compared 3 different algorithms including Random Forest, XGBoost and, Logistic Regression</li>
+          <li><strong>Validation Method:</strong> I used scores, including: Accuracy, Precision, Recall, F1-Score, ROC-AUC, Execution Time. I also made confusion matrices to display results.</li>
         </ul>
 
         <!-- TODO: Add challenges you faced -->
         <h4 class="h5">Challenges & Solutions:</h4>
         <ul>
-          <li><strong>Class Imbalance:</strong> [How you handled it - SMOTE, class weights, etc.]</li>
-          <li><strong>Overfitting:</strong> [Your approach - regularization, pruning, etc.]</li>
-          <li><strong>Feature Selection:</strong> [How you chose the most important features]</li>
+          <li><strong>Class Imbalance:</strong> I used SMOTE to balance the classes after the preprocessing</li>
+          <li><strong>Overfitting:</strong> The train test split I used should have detected most the overfitting and 2 out of the 3 model (Logistic Regression and Random Forest handle it by default)</li>
+          <li><strong>Feature Selection:</strong> The main features I chose are just the main reasons someone might have a heart disease such as SmokerStatus</li>
         </ul>
       </div>
     </div>    <div class="card white-card">
