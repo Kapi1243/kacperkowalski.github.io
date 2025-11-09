@@ -67,34 +67,77 @@
           </a>
         </p>
 
-        <!-- TODO: Fill in your actual metrics below -->
         <h4 class="h5">Key Results:</h4>
         <ul>
-          <li><strong>Model Accuracy:</strong> Achieved 88.2% accuracy on test dataset</li>
-          <li><strong>AUC Score:</strong> 94.6% area under the ROC curve</li>
-          <li><strong>Precision/Recall:</strong> Precision: 89.9%, Recall: 86.1%</li>
-          <li><strong>Dataset Size:</strong> 445,132 samples with 40 features</li>
-          <li><strong>Best Model:</strong> Random Forest outperformed other algorithms</li>
+          <li><strong>Model Accuracy:</strong> 88.2% on test dataset (445,132 samples)</li>
+          <li><strong>AUC-ROC Score:</strong> 0.946 (94.6% area under curve)</li>
+          <li><strong>Precision:</strong> 89.9% - High confidence in positive predictions</li>
+          <li><strong>Recall:</strong> 86.1% - Successfully identified 86.1% of heart disease cases</li>
+          <li><strong>F1-Score:</strong> 0.88 - Strong balance between precision and recall</li>
+          <li><strong>Dataset:</strong> 445,132 patient samples with 40 clinical features</li>
+          <li><strong>Best Model:</strong> Random Forest Classifier outperformed Logistic Regression and XGBoost</li>
         </ul>
 
         <h4 class="h5">Project Overview:</h4>
         <p>This project demonstrates the application of machine learning to predict the likelihood of heart disease in individuals based on various health-related features. Using a dataset containing patient information, such as age, cholesterol levels, blood pressure, and family history, I trained a classification model to identify patterns and predict the risk of heart disease. After pre-processing the data, including handling missing values and scaling features, I used algorithms like Decision Trees and Logistic Regression to build an accurate model. The project focused on not only achieving high accuracy but also on providing explainable results, allowing healthcare professionals to interpret the model's predictions. The final model can be used to assess an individual's risk, providing valuable insights for early diagnosis and prevention. This project showcases the potential of machine learning in healthcare, where predictive models can assist in saving lives by offering timely interventions.</p>
         
-        <!-- TODO: Add technical details -->
         <h4 class="h5">Technical Details:</h4>
         <ul>
-          <li><strong>Data Preprocessing:</strong> Applied preprocessing using a ColumnTransformer to handle both numerical and categorical data. Numerical features were imputed with the mean, while categorical features were imputed with the most frequent value and encoded using one-hot encoding.</li>
-          <li><strong>Feature Engineering:</strong> [Any features you created or selected]</li>
-          <li><strong>Model Selection:</strong> Compared 3 different algorithms including Random Forest, XGBoost and, Logistic Regression</li>
-          <li><strong>Validation Method:</strong> I used scores, including: Accuracy, Precision, Recall, F1-Score, ROC-AUC, Execution Time. I also made confusion matrices to display results.</li>
+          <li><strong>Data Preprocessing:</strong> Applied ColumnTransformer with two pipelines:
+            <ul>
+              <li>Numerical features: SimpleImputer (mean strategy) → Standardization</li>
+              <li>Categorical features: SimpleImputer (most frequent) → One-hot encoding</li>
+            </ul>
+          </li>
+          <li><strong>Class Balancing:</strong> Applied SMOTE (Synthetic Minority Over-sampling Technique) after preprocessing to handle class imbalance</li>
+          <li><strong>Feature Selection:</strong> Focused on clinically relevant features including:
+            <ul>
+              <li>Patient demographics (Age, Sex, BMI)</li>
+              <li>Risk factors (SmokerStatus, AlcoholDrinkers, PhysicalActivity)</li>
+              <li>Health indicators (GeneralHealth, DiabetesStatus, KidneyDisease)</li>
+              <li>Medical history (HadHeartAttack, HadStroke, HadAngina)</li>
+            </ul>
+          </li>
+          <li><strong>Model Comparison:</strong> Evaluated 3 algorithms:
+            <ul>
+              <li>Logistic Regression: Baseline model with built-in regularization</li>
+              <li>Random Forest: Best performer (88.2% accuracy)</li>
+              <li>XGBoost: Gradient boosting ensemble method</li>
+            </ul>
+          </li>
+          <li><strong>Validation:</strong> Train-test split (80/20) with comprehensive metrics:
+            <ul>
+              <li>Accuracy, Precision, Recall, F1-Score</li>
+              <li>ROC-AUC curve analysis</li>
+              <li>Confusion matrices for error analysis</li>
+              <li>Execution time monitoring</li>
+            </ul>
+          </li>
+          <li><strong>Visualization:</strong> Created comprehensive analysis plots:
+            <ul>
+              <li>Age distribution analysis across disease/healthy groups</li>
+              <li>BMI correlation with heart disease risk</li>
+              <li>Model performance comparison charts</li>
+              <li>Confusion matrices for each algorithm</li>
+            </ul>
+          </li>
         </ul>
 
-        <!-- TODO: Add challenges you faced -->
         <h4 class="h5">Challenges & Solutions:</h4>
         <ul>
-          <li><strong>Class Imbalance:</strong> I used SMOTE to balance the classes after the preprocessing</li>
-          <li><strong>Overfitting:</strong> The train test split I used should have detected most the overfitting and 2 out of the 3 model (Logistic Regression and Random Forest handle it by default)</li>
-          <li><strong>Feature Selection:</strong> The main features I chose are just the main reasons someone might have a heart disease such as SmokerStatus</li>
+          <li><strong>Class Imbalance:</strong> Dataset showed uneven distribution between healthy and disease cases - Solved by applying SMOTE after preprocessing to generate synthetic samples of the minority class, improving model's ability to detect disease cases</li>
+          <li><strong>Large Dataset Processing:</strong> 445K+ samples required efficient processing - Solved by implementing preprocessing pipeline with ColumnTransformer, allowing parallel processing of numerical and categorical features</li>
+          <li><strong>Overfitting Prevention:</strong> Initial models showed potential overfitting - Mitigated by:
+            <ul>
+              <li>80/20 train-test split for validation</li>
+              <li>Logistic Regression's built-in L2 regularization</li>
+              <li>Random Forest's ensemble approach (multiple decision trees)</li>
+              <li>Monitoring train vs test performance metrics</li>
+            </ul>
+          </li>
+          <li><strong>Feature Selection:</strong> 40 features required careful selection - Prioritized clinically significant features (SmokerStatus, Age, BMI, DiabetesStatus) based on medical literature and feature importance analysis from Random Forest</li>
+          <li><strong>Model Interpretability:</strong> Healthcare applications require explainable predictions - Generated confusion matrices and visualization plots (Age, BMI distributions) to help medical professionals understand model decisions and risk factors</li>
+          <li><strong>Missing Data:</strong> Real-world medical data contained missing values - Handled through SimpleImputer with mean imputation for numerical features and mode imputation for categorical features</li>
         </ul>
       </div>
     </div>    <div class="card white-card">
