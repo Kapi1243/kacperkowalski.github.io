@@ -81,7 +81,6 @@
     <div class="card">
       <div class="card-block">
         <h2 style="color: black; text-align: center;">About the Project</h2>
-        <h4 class="h5">Technologies: Python, Q-Learning, Reinforcement Learning, NumPy</h4>
         
         <p style="text-align: center; margin-bottom: 20px;">
           <a href="https://github.com/Kapi1243/snake-reinforcement-learning" class="btn btn-primary" target="_blank">
@@ -89,101 +88,41 @@
           </a>
         </p>
 
-        <h4 class="h5">Project Overview:</h4>
-        <p>A modern implementation of Q-Learning applied to the classic Snake game. This project demonstrates fundamental reinforcement learning concepts using a custom-built environment and tabular Q-learning agent. The agent learns to play Snake through reinforcement learning without any hardcoded game strategy, developing an optimal policy purely from experience using rewards and penalties.</p>
+        <p>A reinforcement learning agent that learns to play Snake using tabular Q-Learning in a custom Python environment. The agent improves purely through interaction with the game—no scripted strategy—learning a policy that balances reaching food with avoiding collisions.</p>
 
-        <h4 class="h5">Performance Metrics:</h4>
+        <h4 class="h5" style="margin-top: 25px;">Highlights</h4>
         <ul>
-          <li><strong>Best Average Score:</strong> 33.20 over evaluation episodes</li>
-          <li><strong>Best Single Score:</strong> 62 (24.2% board coverage on 16×16 grid)</li>
-          <li><strong>Training Episodes:</strong> ~15,700 (with early stopping)</li>
-          <li><strong>State Space:</strong> 256 discrete states (8-bit binary encoding)</li>
-          <li><strong>Board Size:</strong> 16×16 grid (256 squares total)</li>
+          <li>Custom Snake environment built for RL-style training and evaluation</li>
+          <li>Tabular Q-Learning with epsilon-greedy exploration and decay</li>
+          <li>Compact state encoding (8-bit binary, 256 discrete states) to keep learning feasible and fast</li>
+          <li>Reward design to speed up learning and reduce random wandering early on</li>
+          <li>Reproducible experiments with seeded runs and logged results</li>
+          <li>Visual outputs: training curves and gameplay GIFs</li>
         </ul>
 
-        <h4 class="h5">Key Features:</h4>
+        <h4 class="h5">How it works</h4>
+        <p>At each step, the agent observes a compact representation of the board (food direction + immediate collision risks), selects an action, receives a reward signal, and updates its Q-table via the Bellman update:</p>
+        <p style="text-align: center; font-style: italic; margin: 15px 0;">Q(s,a) ← Q(s,a) + α(r + γ max Q(s',a') − Q(s,a))</p>
+        <p><strong>Key hyperparameters:</strong> Learning rate α = 0.1, discount factor γ = 0.9, epsilon decay = 0.9995 per episode (0.2 → 0.05)</p>
+        <p><strong>Performance:</strong> Best average score of 33.20, highest single score of 62 (24.2% board coverage) with ~15,700 training episodes.</p>
+
+        <h4 class="h5">What I learned</h4>
         <ul>
-          <li><strong>Custom Snake Environment:</strong> Grid-based game implementation optimized for RL</li>
-          <li><strong>Tabular Q-Learning:</strong> Incremental updates with epsilon decay (ε: 0.2 → 0.05)</li>
-          <li><strong>Efficient State Representation:</strong> 8-dimensional binary encoding
-            <ul>
-              <li>Bits 0-3: Obstacle detection (↑ → ↓ ←)</li>
-              <li>Bits 4-7: Food direction (↑ → ↓ ←)</li>
-            </ul>
-          </li>
-          <li><strong>Length-Based Rewards:</strong> Scaled rewards encouraging longer survival (+10.0 + length × 0.5 for food)</li>
-          <li><strong>Early Stopping:</strong> Automatic training termination when performance plateaus</li>
-          <li><strong>Training Visualization:</strong> Auto-generated performance curves and convergence graphs</li>
-          <li><strong>Model Persistence:</strong> Save and load trained Q-tables</li>
-          <li><strong>Type Hints & Documentation:</strong> Production-quality code standards</li>
+          <li>MDPs and value functions, exploration vs exploitation trade-offs</li>
+          <li>State design to prevent state-space explosion (8-bit encoding reduces 2^32 potential states to just 256)</li>
+          <li>Reward shaping for faster convergence—sparse rewards slow learning, so designed multi-tier structure: food eating (+10 + length×0.5), moving toward food (+1.1), survival bonus (+0.1 per step), collision (-10)</li>
+          <li>Writing maintainable RL code with type hints, modular structure, and model persistence</li>
         </ul>
 
-        <h4 class="h5">How It Works:</h4>
-        <p><strong>Q-Learning Algorithm:</strong></p>
-        <p>The agent uses the incremental Q-learning update rule: Q(s, a) ← Q(s, a) + α · [r + γ · max[Q(s', a')] - Q(s, a)]</p>
+        <h4 class="h5">Next steps</h4>
         <ul>
-          <li><strong>Learning Rate (α):</strong> 0.1</li>
-          <li><strong>Discount Factor (γ):</strong> 0.9</li>
-          <li><strong>Epsilon Decay:</strong> 0.9995 per episode</li>
+          <li>Compare against DQN-based agents (Double/Dueling DQN) for scalability</li>
+          <li>Test with larger boards and richer state representations</li>
+          <li>Curriculum learning to gradually increase difficulty</li>
         </ul>
 
-        <p><strong>Reward Structure:</strong></p>
-        <ul>
-          <li>Eating food: +10.0 + (length × 0.5)</li>
-          <li>Moving toward food: +1.1</li>
-          <li>Survival (each step): +0.1</li>
-          <li>Collision (death): -10</li>
-        </ul>
-
-        <h4 class="h5">Technical Implementation:</h4>
-        <ul>
-          <li><strong>State Encoding:</strong> Compact 8-bit binary representation allows 2^8 = 256 states, making tabular Q-learning feasible</li>
-          <li><strong>Action Space:</strong> 4 discrete actions (up, right, down, left)</li>
-          <li><strong>Environment Design:</strong> Custom Snake.py with Markov Decision Process (MDP) structure</li>
-          <li><strong>Training Pipeline:</strong> QLearningAgent.py with configurable hyperparameters</li>
-          <li><strong>Visualization Tools:</strong> Performance curves, Q-value convergence plots, animated training GIFs</li>
-        </ul>
-
-        <h4 class="h5">Usage Examples:</h4>
-        <p><strong>Train a new agent:</strong></p>
-        <code style="background: #f4f4f4; padding: 10px; display: block; margin: 10px 0;">python src/QLearningAgent.py</code>
-        
-        <p><strong>Use pre-trained model:</strong></p>
-        <code style="background: #f4f4f4; padding: 10px; display: block; margin: 10px 0;">
-from src.QLearningAgent import QLearningAgent<br>
-agent = QLearningAgent()<br>
-agent.load('models/q_learning_snake.pkl')<br>
-avg_score, scores = agent.evaluate(board_size=16, num_episodes=100)
-        </code>
-
-        <h4 class="h5">Challenges & Solutions:</h4>
-        <ul>
-          <li><strong>State Space Explosion:</strong> A naive state representation would result in millions of states. Solved by designing an efficient 8-bit binary encoding that captures only essential information (obstacle detection + food direction), reducing to just 256 states.</li>
-          <li><strong>Sparse Rewards:</strong> Early training showed slow learning due to infrequent food encounters. Solved by implementing a multi-tier reward structure: small positive reward (+1.1) for moving toward food, survival bonus (+0.1 per step), and length-scaled food reward (+10.0 + length × 0.5).</li>
-          <li><strong>Exploration vs. Exploitation:</strong> Agent got stuck in local optima with fixed epsilon. Solved by implementing epsilon decay (0.9995 per episode) from 0.2 to 0.05, allowing high initial exploration that gradually shifts to exploitation of learned policy.</li>
-          <li><strong>Training Efficiency:</strong> Training took excessive time without convergence detection. Solved by implementing early stopping mechanism that monitors average score plateau over 500 episodes, reducing training from potential 20,000+ to ~15,700 episodes.</li>
-        </ul>
-
-        <h4 class="h5">Learning Outcomes:</h4>
-        <ul>
-          <li>Markov Decision Processes (MDPs) and state-action value functions</li>
-          <li>Q-learning algorithm with temporal difference updates</li>
-          <li>Exploration-exploitation trade-off via epsilon-greedy strategy</li>
-          <li>State space engineering and feature representation</li>
-          <li>Reward shaping for faster convergence</li>
-          <li>Object-oriented Python design with type hints</li>
-          <li>Model persistence and evaluation techniques</li>
-        </ul>
-
-        <h4 class="h5">Future Improvements:</h4>
-        <ul>
-          <li>Deep Q-Networks (DQN) to handle larger state spaces</li>
-          <li>Double DQN to reduce overestimation bias</li>
-          <li>Dueling DQN with separate value and advantage streams</li>
-          <li>Prioritized Experience Replay for efficient learning</li>
-          <li>Multi-step TD learning (n-step returns)</li>
-          <li>Curriculum learning with gradually increasing board size</li>
-        </ul>
+        <h4 class="h5">Tech</h4>
+        <p>Python • NumPy • Reinforcement Learning • Q-Learning</p>
       </div>
     </div>
 
