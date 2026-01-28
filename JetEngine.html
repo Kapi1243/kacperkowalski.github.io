@@ -76,7 +76,6 @@
     <div class="card">
       <div class="card-block">
         <h2 style="color: black; text-align: center;">About the Project</h2>
-        <h4 class="h5">Technologies: Python, PyQt6, NumPy, Matplotlib, Thermodynamic Modeling</h4>
         
         <p style="text-align: center; margin-bottom: 20px;">
           <a href="https://github.com/Kapi1243/jet_engine_sim" class="btn btn-primary" target="_blank">
@@ -84,60 +83,39 @@
           </a>
         </p>
 
-        <h4 class="h5">Key Features:</h4>
+        <p>A high-fidelity Python simulation framework for turbojet engines implementing comprehensive thermodynamic modeling with real-time parameter optimization and interactive visualization. Validated against NASA CEA and GasTurb with production-quality code architecture.</p>
+
+        <h4 class="h5" style="margin-top: 25px;">Highlights</h4>
         <ul>
-          <li><strong>High-Fidelity Thermodynamic Modeling:</strong> Real gas properties and ISA atmosphere implementation</li>
-          <li><strong>Dual-Mode Operation:</strong> Standard turbojet and afterburning configurations</li>
-          <li><strong>Component-Level Analysis:</strong> Detailed compressor, combustor, turbine, and nozzle performance</li>
-          <li><strong>Interactive GUI:</strong> Real-time parameter adjustment with PyQt6 interface</li>
-          <li><strong>Multi-Parameter Optimization:</strong> Constraint handling and performance envelope mapping</li>
-          <li><strong>Comprehensive Testing:</strong> >95% code coverage ensuring simulation accuracy</li>
+          <li>Brayton cycle with real gas effects, variable specific heats, and component efficiency modeling</li>
+          <li>Dual-mode operation: standard turbojet and afterburning configurations</li>
+          <li>Interactive PyQt6 GUI with real-time parameter adjustment and performance visualization</li>
+          <li>Thrust range 78.5–125.3 kN with thermal efficiency up to 42.1%</li>
+          <li>Model validated against NASA CEA, GasTurb, and manufacturer data</li>
+          <li>>95% test coverage with comprehensive type safety (mypy)</li>
         </ul>
 
-        <h4 class="h5">Performance Metrics:</h4>
+        <h4 class="h5">How it works</h4>
+        <p>Users input engine parameters (throttle setting, environmental conditions, component efficiencies) and the simulator computes performance using thermodynamic equations: combustor temperature, compression ratios, thrust, fuel consumption. Multi-objective optimization balances thrust vs. fuel efficiency under constraints. Visualizations include performance envelopes and component-level analysis.</p>
+
+        <h4 class="h5">What I learned</h4>
         <ul>
-          <li><strong>Thrust Analysis:</strong> Net thrust calculations ranging from 78.5 kN (baseline) to 125.3 kN (afterburning)</li>
-          <li><strong>Fuel Efficiency:</strong> TSFC optimization from 16.2 to 15.1 mg/N·s in optimized configuration</li>
-          <li><strong>Overall Efficiency:</strong> Achieved 42.1% thermal efficiency in optimized mode</li>
-          <li><strong>Specific Impulse:</strong> Isp calculations up to 6,756 seconds</li>
+          <li>Thermodynamic modeling with NASA polynomial approximations for real gas properties</li>
+          <li>Numerical optimization under constraints with real-time feedback</li>
+          <li>Clean architecture: modular design with separation of simulation engine, GUI, visualization, and CLI</li>
+          <li>Type safety and static analysis with Python (mypy, comprehensive annotations)</li>
+          <li>Model validation methodology—compare against multiple reference sources</li>
         </ul>
 
-        <h4 class="h5">Project Overview:</h4>
-        <p>This project demonstrates the development of a high-fidelity Python simulation framework for turbojet engines, implementing comprehensive thermodynamic modeling with real-time parameter optimization and interactive visualization. The simulator incorporates the Brayton cycle with real gas effects, variable specific heats, compressible flow dynamics, and component efficiency modeling. The architecture follows clean code principles with full separation of concerns, type safety through comprehensive annotations, and extensive documentation. The project includes a command-line interface for batch processing, an interactive PyQt6 GUI for real-time parameter exploration, and advanced visualization capabilities for performance analysis. Model validation was performed against NASA CEA (Chemical Equilibrium with Applications), GasTurb performance data, and published engine specifications from major manufacturers, ensuring simulation accuracy and reliability.</p>
-        
-        <h4 class="h5">Technical Implementation:</h4>
+        <h4 class="h5">Next steps</h4>
         <ul>
-          <li><strong>Core Engine:</strong> Modular thermodynamic simulation with adaptive efficiency modeling for off-design conditions</li>
-          <li><strong>Optimization Engine:</strong> Multi-objective optimization balancing thrust and fuel efficiency</li>
-          <li><strong>Visualization Suite:</strong> Professional-grade plotting with publication-ready performance envelopes</li>
-          <li><strong>Testing Framework:</strong> Comprehensive pytest suite with code coverage analysis</li>
-          <li><strong>Architecture:</strong> Clean separation of simulation engine, GUI, visualization, and CLI interfaces</li>
-          <li><strong>Type Safety:</strong> Full type annotations with mypy static type checking</li>
+          <li>Turboprop and turbofan variants to model modern civil aircraft</li>
+          <li>Transient simulation for engine start-up and shutdown sequences</li>
+          <li>Web-based interface for accessibility without local installation</li>
         </ul>
 
-        <h4 class="h5">Key Achievements:</h4>
-        <ul>
-          <li><strong>Performance:</strong> Optimized numerical methods enabling real-time simulation</li>
-          <li><strong>Accuracy:</strong> Model validated against industry-standard tools and real engine data</li>
-          <li><strong>Extensibility:</strong> Plugin architecture allowing custom engine configurations</li>
-          <li><strong>Code Quality:</strong> >95% test coverage with comprehensive documentation</li>
-        </ul>
-
-        <h4 class="h5">Challenges & Solutions:</h4>
-        <ul>
-          <li><strong>Thermodynamic Complexity:</strong> Implemented variable specific heat models and real gas effects - Solved by integrating validated NASA thermodynamic tables and polynomial approximations</li>
-          <li><strong>Real-Time Performance:</strong> Needed fast computation for interactive GUI - Solved through optimized numerical methods and efficient caching strategies</li>
-          <li><strong>Model Validation:</strong> Ensuring simulation accuracy - Solved by comprehensive validation against NASA CEA, GasTurb, and manufacturer data</li>
-          <li><strong>User Interface:</strong> Making complex engineering tool accessible - Solved with intuitive PyQt6 GUI providing instant visual feedback</li>
-        </ul>
-
-        <h4 class="h5">Use Cases:</h4>
-        <ul>
-          <li>Aerospace engineering education and gas turbine fundamentals</li>
-          <li>Research & development for rapid prototyping of engine concepts</li>
-          <li>Performance analysis and comparative studies</li>
-          <li>Demonstrating technical depth for graduate positions</li>
-        </ul>
+        <h4 class="h5">Tech</h4>
+        <p>Python • PyQt6 • NumPy • SciPy • Matplotlib • Thermodynamic Modeling</p>
       </div>
     </div>
 

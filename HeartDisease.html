@@ -76,7 +76,6 @@
     <div class="card">
       <div class="card-block">
         <h2 style="color: black; text-align: center;">About the Project</h2>
-        <h4 class="h5">Technologies Used: Python 3.9+, Scikit-Learn, Imbalanced-Learn (SMOTE), SHAP, XGBoost, Pandas, NumPy, Matplotlib, Seaborn</h4>
         
         <p style="text-align: center; margin-bottom: 20px;">
           <a href="https://github.com/Kapi1243/Heart-Disease-AI" class="btn btn-primary" target="_blank">
@@ -84,76 +83,42 @@
           </a>
         </p>
 
-        <h4 class="h5">Key Results (Logistic Regression - Best Performer):</h4>
+        <p>A production-grade ML pipeline for cardiovascular disease risk prediction using ~309,000 patient samples. Focuses on engineering discipline: preventing data leakage, proper class imbalance handling, metric literacy, explainability via SHAP, and reproducibility—reflecting real-world ML concerns where accuracy alone can mislead.</p>
+
+        <h4 class="h5" style="margin-top: 25px;">Highlights</h4>
         <ul>
-          <li><strong>ROC-AUC Score:</strong> 0.836 - Strong ranking ability across classification thresholds</li>
-          <li><strong>PR-AUC Score:</strong> 0.311 - Appropriate for severe class imbalance context</li>
-          <li><strong>Recall:</strong> 0.793 (79.3%) - Identifies 79% of high-risk cases (critical for screening)</li>
-          <li><strong>Precision:</strong> 0.207 (20.7%) - Reflects inherent class imbalance (~8-9% positive class)</li>
-          <li><strong>F1-Score:</strong> 0.328 - Balanced perspective on precision-recall tradeoff</li>
-          <li><strong>Dataset:</strong> ~309,000 patient samples with 18 features (7 numerical, 11 categorical)</li>
-          <li><strong>Class Distribution:</strong> 8-9% positive class (realistic imbalance in CVD screening scenarios)</li>
-          <li><strong>Why These Metrics Matter:</strong> Accuracy alone is misleading under imbalance (~92% dummy baseline); ROC/PR-AUC and threshold optimization better reflect real-world utility</li>
+          <li>Logistic Regression achieves 0.836 ROC-AUC with 79.3% recall (identifies high-risk cases)</li>
+          <li>Data leakage prevention: train/validation/test split before preprocessing, SMOTE on training only</li>
+          <li>Class imbalance handling: proper metrics (ROC/PR-AUC) instead of accuracy; cost-based threshold optimization</li>
+          <li>SHAP explainability for global and local interpretability in high-stakes decisions</li>
+          <li>Reproducible engineering: fixed seeds, pinned dependencies, persisted artifacts, JSON metadata</li>
+          <li>Honest assessment: acknowledges dataset limitations and absence of fairness analysis</li>
         </ul>
 
-        <h4 class="h5">Project Overview:</h4>
-        <p><strong>End-to-End ML Pipeline for Cardiovascular Disease Risk Prediction</strong></p>
-        <p>This is a production-grade machine learning system designed to predict cardiovascular disease risk using ~309,000 patient samples. Unlike typical student ML projects that optimize accuracy in notebooks, this pipeline was engineered with a focus on <strong>correctness, explainability, and reproducibility</strong>&mdash;reflecting real-world ML engineering concerns.</p>
-        <p><strong>The Problem Solved:</strong> Most ML projects introduce subtle but critical errors: data leakage, improper class imbalance handling, misleading metrics, and unstable explanations. This project demonstrates how to engineer around these pitfalls through rigorous validation and design.</p>
-        <p><strong>Key Engineering Decisions:</strong></p>
+        <h4 class="h5">The Problem Solved</h4>
+        <p>Most ML projects introduce subtle critical errors: data leakage, improper class imbalance handling (~92% dummy baseline), misleading metrics, and unstable explanations. This project engineers around these pitfalls to create a trustworthy system for regulated healthcare contexts.</p>
+
+        <h4 class="h5">Key Results</h4>
+        <p><strong>Best Model (Logistic Regression):</strong> ROC-AUC 0.836, Recall 79.3%, Precision 20.7% (reflects 8-9% positive class prevalence). Demonstrates proper metric selection—accuracy (~92% baseline) would be deceptive; ROC/PR-AUC and threshold tuning reveal true utility.</p>
+
+        <h4 class="h5">What I learned</h4>
         <ul>
-          <li><strong>No Data Leakage:</strong> Train/validation/test split (80%/20% &rarr; 68%/17%) performed <em>before</em> preprocessing; SMOTE applied only to training data; preprocessing fitted on training data only and persisted as artifacts</li>
-          <li><strong>Proper Class Imbalance Handling:</strong> SMOTE resampling applied exclusively to training set to address severe imbalance (8-9% positive class)</li>
-          <li><strong>Metric Literacy:</strong> Emphasis on ROC-AUC and PR-AUC over accuracy; includes cost-based threshold optimization rather than arbitrary 0.5 decision boundary</li>
-          <li><strong>Explainability:</strong> SHAP analysis for global and local interpretability; cross-fold feature importance stability checks to distinguish signal from noise</li>
-          <li><strong>Reproducibility:</strong> Fixed random seeds, pinned dependencies, persisted preprocessing artifacts, JSON run metadata, version-controlled models</li>
+          <li>Data leakage prevention: split before preprocessing is non-negotiable; SMOTE on training only</li>
+          <li>Class imbalance in medical contexts requires careful metric selection and cost-based threshold optimization</li>
+          <li>Explainability in regulated domains: SHAP analysis is central to design, not an afterthought</li>
+          <li>Reproducibility and auditability are core requirements in regulated ML systems</li>
+          <li>Feature importance requires cross-fold stability checks to distinguish signal from noise</li>
         </ul>
-        <p><strong>Why This Approach Matters:</strong> Healthcare applications demand trustworthy, auditable decisions. This pipeline is designed for regulated contexts where false positives/negatives carry real costs. The threshold optimization framework allows domain experts to adjust operating points based on cost assumptions rather than relying on default thresholds.</p>
-        
-        <h4 class="h5">Technical Implementation:</h4>
-        <p><strong>Data Pipeline:</strong></p>
+
+        <h4 class="h5">Next steps</h4>
         <ul>
-          <li><strong>Dataset:</strong> Cardiovascular Diseases Risk Prediction dataset (~309k samples, 18 features: 7 numerical, 11 categorical, binary target)</li>
-          <li><strong>Leakage Prevention:</strong> Train/validation/test split performed <em>before</em> preprocessing (80% train, 20% holdout &rarr; 68% train, 17% validation, 17% test)</li>
-          <li><strong>Preprocessing (Fitted Only on Training Data):</strong> ColumnTransformer with dual pipelines:
-            <ul>
-              <li>Numerical: SimpleImputer (mean strategy) &rarr; StandardScaler</li>
-              <li>Categorical: SimpleImputer (mode) &rarr; OneHotEncoder</li>
-            </ul>
-          </li>
-          <li><strong>Class Imbalance Mitigation:</strong> SMOTE resampling applied exclusively to training data after preprocessing (handles 8-9% positive class)</li>
-          <li><strong>Artifact Persistence:</strong> Preprocessing pipeline and best model saved as versioned artifacts for inference reproducibility</li>
+          <li>Fairness analysis: detect and mitigate bias across demographic groups</li>
+          <li>Feature engineering: incorporate time-series elements (blood pressure trends)</li>
+          <li>Model deployment: create inference API with confidence intervals</li>
         </ul>
-        <p><strong>Models Trained:</strong></p>
-        <ul>
-          <li><strong>Logistic Regression</strong> (Best performer) - Interpretable linear baseline with L2 regularization</li>
-          <li><strong>Random Forest</strong> - Tree-based ensemble (more conservative, trades recall for precision)</li>
-          <li><strong>XGBoost</strong> - Gradient boosting for performance comparison</li>
-          <li><strong>Dummy Classifiers</strong> (stratified, most frequent) - Establish performance floor; show that accuracy alone can mislead (~92% dummy baseline)</li>
-        </ul>
-        <p><strong>Evaluation Approach:</strong></p>
-        <ul>
-          <li><strong>Primary Metrics:</strong> ROC-AUC (0.836) and PR-AUC (0.311) &ndash; chosen because accuracy is misleading under class imbalance</li>
-          <li><strong>Secondary Metrics:</strong> Precision (0.207), Recall (0.793), F1 (0.328) &ndash; explicitly analyzed for tradeoffs</li>
-          <li><strong>Cost-Based Threshold Optimization:</strong> Evaluated multiple decision thresholds under different false-positive vs. false-negative cost assumptions (rather than hardcoding 0.5)</li>
-          <li><strong>Per-Fold Artifacts:</strong> Full confusion matrices, ROC/PR curves, and run metadata saved per fold for auditability</li>
-        </ul>
-        <p><strong>Explainability &amp; Interpretability:</strong></p>
-        <ul>
-          <li><strong>Global SHAP:</strong> Identifies consistently important risk factors across the dataset</li>
-          <li><strong>Local SHAP:</strong> Per-sample explanations support audits and clinical decision support</li>
-          <li><strong>Feature Importance Stability:</strong> Cross-fold checks to distinguish true signal from noise in feature rankings</li>
-        </ul>
-        <p><strong>Key Engineering Insights &amp; Lessons Demonstrated:</strong></p>
-        <ul>
-          <li><strong>Data Leakage Prevention:</strong> Split before preprocessing is non-negotiable; SMOTE on training data only; preprocessing fitted on training only. Demonstrates understanding of cross-validation fundamentals often overlooked in academic projects.</li>
-          <li><strong>Class Imbalance in Medical Contexts:</strong> 8-9% positive class (realistic CVD prevalence) requires careful metric selection. Accuracy alone is deceptive (~92% dummy baseline); ROC/PR-AUC and threshold tuning reveal true model utility.</li>
-          <li><strong>Threshold Awareness:</strong> Default 0.5 threshold is arbitrary. Implemented cost-based optimization to support domain-expert decision-making (e.g., "What false-positive rate is acceptable for screening?")</li>
-          <li><strong>Explainability in Regulated Domains:</strong> SHAP analysis is not an afterthought but central to the design. Enables medical professionals to audit predictions and trust model decisions&mdash;essential in healthcare.</li>
-          <li><strong>Reproducibility &amp; Auditability:</strong> Fixed seeds, pinned dependencies, persisted artifacts, JSON metadata. Results are auditable and repeatable&mdash;a core requirement in regulated ML systems.</li>
-          <li><strong>Honest Assessment of Limitations:</strong> Acknowledges dataset limitations (self-reported data), class imbalance constraints, and absence of fairness analysis. Demonstrates mature understanding of model scope and failure modes.</li>
-        </ul>
-        <p><strong>What Makes This Project Production-Grade:</strong> Most student projects optimize accuracy in notebooks and stop. This pipeline demonstrates the engineering discipline required for real-world deployments: leakage prevention, proper baselines, metric literacy, explainability, reproducibility, and honest limitations assessment. Designed for high-stakes decision-making contexts where errors carry real consequences.</p>
+
+        <h4 class="h5">Tech</h4>
+        <p>Python • Scikit-Learn • SMOTE • SHAP • XGBoost • Pandas • Matplotlib</p>
       </div>
     </div>    <div class="card white-card">
       <img src="./assets/images/heart-disease/confusion_matrices.png" alt="Heart disease model confusion matrices" class="project-img">
