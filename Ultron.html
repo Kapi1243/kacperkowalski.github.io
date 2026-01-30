@@ -88,40 +88,46 @@
           </a>
         </p>
 
-        <p>A fine-tuned Mistral-7B language model character chatbot featuring Ultron from Marvel's Avengers with voice interface, 4-bit quantization for consumer GPUs, and production-quality system design. Demonstrates advanced LLM optimization and memory-efficient training techniques.</p>
+        <p>A fine-tuned Mistral-7B character chatbot based on Ultron (Marvel), featuring a voice interface and memory-efficient inference on consumer GPUs. The project focuses on practical LLM optimization, quantization, and system-level design rather than benchmark chasing.</p>
 
         <h4 class="h5" style="margin-top: 25px;">Highlights</h4>
         <ul>
-          <li>Mistral-7B fine-tuned with QLoRA for authentic character personality</li>
-          <li>4-bit quantization reduces VRAM from 16GB to 4GB (75% reduction)</li>
-          <li>2–5 second response times with caching and mixed precision optimization</li>
-          <li>Voice interface: push-to-talk input with character-specific text-to-speech output</li>
-          <li>Multi-turn dialogue with personality consistency across conversations</li>
-          <li>>90% test coverage with modular, production-ready architecture</li>
+          <li>Mistral-7B fine-tuned with QLoRA to achieve consistent Ultron-style character responses</li>
+          <li>4-bit NF4 quantization enabling inference on 8GB consumer GPUs (~3.5–4GB VRAM usage)</li>
+          <li>Low-latency inference with typical responses in the 2–5 second range on an RTX 4060 Ti</li>
+          <li>Voice interface with push-to-talk input and character-styled text-to-speech output</li>
+          <li>Multi-turn dialogue support with prompt rules and post-processing for personality consistency</li>
+          <li>Modular, production-oriented architecture with clear separation of model, runtime, and audio layers</li>
         </ul>
 
         <h4 class="h5">How it works</h4>
-        <p>Start the chatbot and speak (or type) questions. The system loads the fine-tuned model with 4-bit quantization, processes input through the LLM, and responds in Ultron's voice with character consistency. Caching speeds up repeated queries. Multi-turn context awareness maintains conversation coherence.</p>
+        <p>The system loads a QLoRA-fine-tuned Mistral-7B model using 4-bit quantization. User input (voice or text) is processed by the LLM, post-processed for character consistency, and returned via text-to-speech. A lightweight caching layer reduces repeated computation for identical prompts. Multi-turn context is maintained to preserve conversational coherence.</p>
 
         <h4 class="h5">What I learned</h4>
+        <p><strong>LLM fine-tuning on consumer hardware:</strong> Using QLoRA to adapt a 7B model without full-precision fine-tuning.</p>
+        <p><strong>Memory-efficient inference:</strong> Practical use of 4-bit NF4 quantization, mixed precision, and GPU-only execution.</p>
+        <p><strong>Character consistency techniques:</strong> Prompt engineering, few-shot examples, and response post-processing.</p>
+        <p><strong>Caching trade-offs:</strong> LRU caching improves responsiveness for repeated queries, though performance gains are workload-dependent.</p>
+        <p><strong>Production ML considerations:</strong> Error handling, fallback paths, logging, and graceful degradation.</p>
+        <p><strong>Voice AI integration:</strong> Speech recognition, TTS, and audio effects using FFmpeg and pyttsx3.</p>
+
+        <h4 class="h5">Current features</h4>
         <ul>
-          <li>LLM fine-tuning and quantization: QLoRA enables training on consumer hardware</li>
-          <li>Memory optimization: 4-bit NF4 quantization, mixed precision, model compilation</li>
-          <li>Character consistency: prompt engineering, few-shot examples, response post-processing</li>
-          <li>Caching strategies: LRU cache provides 50% speedup for repeated queries</li>
-          <li>Production ML systems: error handling, performance monitoring, graceful degradation</li>
-          <li>Voice AI: speech recognition, text-to-speech, audio effects (FFmpeg)</li>
+          <li>Local inference with quantized Mistral-7B</li>
+          <li>Voice input and character-specific TTS output</li>
+          <li>Simple Retrieval-Augmented Generation (RAG) for external knowledge</li>
+          <li>Config-driven runtime and generation settings</li>
         </ul>
 
-        <h4 class="h5">Next steps</h4>
+        <h4 class="h5">Future work</h4>
         <ul>
-          <li>Web UI: Real-time chat interface with WebSocket support</li>
-          <li>REST API: FastAPI endpoint for programmatic access</li>
-          <li>RAG integration: Retrieval-Augmented Generation for dynamic knowledge</li>
-          <li>Multi-modal: Vision capabilities for image understanding</li>
+          <li>Web-based UI (planned for a later version)</li>
+          <li>REST API (FastAPI) for programmatic access</li>
+          <li>Expanded RAG pipeline with better document indexing</li>
+          <li>Multi-modal extensions (vision input)</li>
         </ul>
 
-        <h4 class="h5">Tech</h4>
+        <h4 class="h5">Tech stack</h4>
         <p>Python • Mistral-7B • QLoRA • PyTorch • Transformers • pyttsx3 • Speech Recognition</p>
       </div>
     </div>
