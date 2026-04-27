@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="OSINT Threat Intelligence Pipeline - End-to-end AI system for security-feed monitoring, threat classification, entity extraction, risk scoring, and analyst review" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developed by Orson.io team" name="author">
+
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+
+  <title>OSINT Threat Intelligence Pipeline - Kacper Kowalski</title>
+  <link href="./main.d8e0d294.css" rel="stylesheet">
+
+  <style>
+    .project-img {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-block {
+      padding: 25px;
+    }
+
+    .white-card {
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .subtitle {
+      color: #f0f0f0;
+      max-width: 900px;
+      margin: 12px auto 0;
+      text-align: center;
+    }
+
+    .flow-box {
+      background-color: #f8f9fa;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 16px;
+      font-weight: 600;
+      color: #1f2933;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .screenshot-placeholder {
+      width: 100%;
+      max-width: 900px;
+      min-height: 220px;
+      margin: 0 auto;
+      border: 2px dashed #b8c2cc;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fafbfc, #f2f4f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #4a5568;
+      font-weight: 600;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #616161;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="content-wrapper">
+    <header class="white-text-container section-container">
+      <div class="text-center">
+        <h1 style="color: white; text-align: center;">OSINT Threat Intelligence Pipeline</h1>
+        <p class="subtitle">End-to-end AI system for public security-feed monitoring, threat classification, entity extraction, risk scoring, and analyst review.</p>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black; text-align: center;">Short Overview</h2>
+        <p>I built an end-to-end OSINT threat-intelligence prototype that collects public security articles, cleans and deduplicates them, classifies each item into threat categories, extracts entities such as CVEs and organisations, and assigns a configurable 0-100 risk score. The system includes a Streamlit dashboard for analyst review, showing high-risk items, CVE/entity trends, article-level explanations, source reliability, and manual override controls.</p>
+
+        <p style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
+          <a href="index.html" class="btn btn-secondary">Back to Projects</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Why I Built It</h2>
+        <p>I created this project to explore how AI can support threat intelligence workflows while keeping human analysts in control. The goal was not to replace expert judgement, but to reduce manual monitoring effort, prioritise relevant risks, and make model outputs more explainable and auditable.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">What It Does</h2>
+        <ul>
+          <li>Ingests public security feeds</li>
+          <li>Cleans, normalises, and deduplicates articles</li>
+          <li>Stores processed items in SQLite</li>
+          <li>Classifies articles into threat categories using NLP</li>
+          <li>Extracts CVEs, organisations, and other entities</li>
+          <li>Produces analyst-facing explanations using top TF-IDF feature drivers</li>
+          <li>Calculates a 0-100 risk score using severity indicators, confidence, source reliability, and recency</li>
+          <li>Flags low-confidence articles for human review</li>
+          <li>Displays trends and risk insights in a Streamlit dashboard</li>
+          <li>Supports manual analyst override</li>
+          <li>Can run once or on a schedule</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Tech Stack</h2>
+        <p>Python, Streamlit, SQLite, Scikit-learn, Pandas, TF-IDF, NLP, RSS/public security feeds</p>
+        <p style="margin-top: 10px;"><strong>Optional/Extended Components:</strong> spaCy, Hugging Face, BeautifulSoup, APScheduler, Plotly</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Architecture</h2>
+        <p>Pipeline flow:</p>
+        <div class="flow-box">
+          Public Security Feeds -> Ingestion -> Cleaning &amp; Deduplication -> SQLite Storage -> NLP Classification -> Entity Extraction -> Risk Scoring -> Streamlit Dashboard -> Human Review
+        </div>
+      </div>
+    </div>
+
+    <div class="card white-card">
+      <div class="card-block">
+        <h2 style="color: black;">Screenshots</h2>
+
+        <img src="./assets/images/OSINT/Risk%20Leaderboard.png" alt="OSINT dashboard overview with risk leaderboard" class="project-img">
+        <p style="color: black; text-align: center; margin-top: 10px;">Dashboard overview and ranked high-risk items.</p>
+
+        <img src="./assets/images/OSINT/Article%20Detail%20View.png" alt="Article detail page with model explanation" class="project-img" style="margin-top: 24px;">
+        <p style="color: black; text-align: center; margin-top: 10px;">Article-level explanation with model drivers and confidence.</p>
+
+        <img src="./assets/images/OSINT/Top%20Threat%20Actors%20%26%20Top%20CVEs.png" alt="Top threat actors and top CVEs trend view" class="project-img" style="margin-top: 24px;">
+        <p style="color: black; text-align: center; margin-top: 10px;">Trend analysis for CVEs, organisations, and entities over time.</p>
+
+        <img src="./assets/images/OSINT/Feed%20Source%20Reliability.png" alt="Source reliability analysis view" class="project-img" style="margin-top: 24px;">
+        <p style="color: black; text-align: center; margin-top: 10px;">Source-level reliability and confidence alignment.</p>
+
+        <img src="./assets/images/OSINT/Human%20Review%20Override.png" alt="Manual analyst override form" class="project-img" style="margin-top: 24px;">
+        <p style="color: black; text-align: center; margin-top: 10px;">Manual analyst override and audit-friendly review controls.</p>
+
+        <div class="screenshot-placeholder" style="margin-top: 24px;">Screenshot Placeholder: Pipeline/database terminal output (optional)</div>
+        <p style="color: black; text-align: center; margin-top: 10px;">Clean pipeline run output for ingestion and storage checks.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Responsible AI</h2>
+        <p>The system is designed as a decision-support tool rather than an autonomous judgement system. Low-confidence classifications are flagged for human review, and analysts can override model outputs. The project uses public sources only, includes explainability features, and acknowledges that automated threat classification can produce false positives, source bias, and incomplete context.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Limitations</h2>
+        <p>Current limitations include limited labelled evaluation data, heuristic source reliability scoring, and dependence on the quality and coverage of public feeds. Future improvements would include a larger labelled test set, improved entity linking, calibrated risk scoring, role-based dashboard access, and integration with more diverse OSINT sources.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block" style="text-align: center;">
+        <h2 style="color: black;">Project Links</h2>
+        <div class="cta-row">
+          <a href="https://github.com/Kapi1243" class="btn btn-primary" target="_blank">View GitHub Repository</a>
+          <a href="#" class="btn btn-default">View Live Demo</a>
+          <a href="#" class="btn btn-default">Read Technical README</a>
+        </div>
+        <p class="note">Update the Live Demo and Technical README links once hosted.</p>
+        <p style="margin-top: 20px;"><a href="index.html" class="btn btn-secondary">Back to Projects</a></p>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+
+</html>
