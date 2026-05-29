@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="Can We Trust How AI Makes Decisions? Explainable Machine Learning for Heart Disease Prediction" name="description">
+  <meta name="google" content="notranslate" />
+  <meta name="msapplication-tap-highlight" content="no">
+ 
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/XAI-dashboard/XAI Dashboard.png">
+  <link href="./assets/favicon.ico" rel="icon">
+ 
+  <title>XAI Project + Ethics Paper - Kacper Kowalski</title>
+  <link href="./main.d8e0d294.css" rel="stylesheet">
+ 
+  <style>
+    .project-img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+ 
+    .project-img:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+ 
+    .white-card {
+      margin-bottom: 30px;
+      border-radius: 6px;
+    }
+ 
+    .white-card img {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      border-radius: 6px;
+    }
+ 
+    .card-block {
+      padding: 25px;
+    }
+ 
+    h2 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #333;
+    }
+ 
+    .highlight-box {
+      background-color: #f8f9fa;
+      border-left: 4px solid #0066cc;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+ 
+    .metric {
+      font-weight: 600;
+      color: #0066cc;
+    }
+ 
+    .rq-box {
+      background-color: #f0f4ff;
+      border-left: 4px solid #3355cc;
+      padding: 12px 15px;
+      margin: 12px 0;
+      border-radius: 4px;
+      font-style: italic;
+    }
+  </style>
+</head>
+ 
+<body>
+ 
+  <main class="content-wrapper">
+    <header class="white-text-container section-container">
+      <div class="text-center">
+        <h1 style="color: white; text-align: center;">Can We Trust How AI Makes Decisions?<br>Explainable Machine Learning for Heart Disease Prediction</h1>
+        <p style="color: white; text-align: center; margin-top: 10px;">BSc Final Year Project (FYP) &mdash; Bournemouth University, 2026</p>
+      </div>
+    </header>
+ 
+    <div class="card white-card">
+      <div class="card-block">
+        <h2 style="color: black; text-align: center;">Overview</h2>
+ 
+        <p>Most machine learning research in healthcare focuses on how accurate a model is. This project asked a different question: when models disagree on <em>why</em> a prediction was made, which explanation should a clinician trust?</p>
+ 
+        <p>Using the UCI Cleveland Heart Disease Dataset, four classification models were trained and evaluated not just on predictive performance, but on the consistency and reliability of their explanations. Two widely used explainability methods, SHAP and LIME, were applied to every model and compared at both the global level (across all patients) and the local level (for individual predictions).</p>
+ 
+        <p>The project also produced an interactive Streamlit dashboard that translates SHAP values into plain English risk summaries for non-technical users, and a companion ethics paper examining the legal and societal implications of deploying explainable AI in healthcare.</p>
+ 
+        <p style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+          <a href="https://mjwcwwryfxyy8wsqiandcg.streamlit.app/" target="_blank" class="btn btn-primary" style="margin-right: 10px;">Open Streamlit App</a>
+          <a href="https://github.com/Kapi1243/FYP" target="_blank" class="btn btn-default" style="margin-right: 10px;"><i class="fa fa-github"></i> View FYP on GitHub</a>
+          <a href="index.html" class="btn btn-secondary">Back to Projects</a>
+        </p>
+      </div>
+    </div>
+ 
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Research Questions</h2>
+ 
+        <div class="rq-box">
+          <strong>RQ1:</strong> Do different machine learning models produce consistent feature importance rankings when analysed using SHAP?
+        </div>
+ 
+        <div class="rq-box">
+          <strong>RQ2:</strong> Do SHAP and LIME produce consistent explanations for the same model at both global and local levels?
+        </div>
+ 
+        <div class="rq-box">
+          <strong>RQ3:</strong> How can XAI outputs be translated into plain English explanations for non-technical users?
+        </div>
+ 
+        <p style="margin-top: 20px;">These questions matter because clinical decisions are made for individual patients, not populations. An explanation method that looks reliable on average may still produce inconsistent results at the patient level, where the stakes are highest.</p>
+      </div>
+    </div>
+ 
+    <div class="card white-card">
+      <img src="./assets/images/XAI-dashboard/XAI Dashboard.png" alt="Streamlit dashboard showing heart disease prediction with SHAP and LIME explanations" class="project-img">
+      <p style="color: black; text-align: center;">Interactive Streamlit dashboard &mdash; patient data input, model predictions, SHAP waterfall plots, LIME explanations, and plain English risk summaries</p>
+    </div>
+ 
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Key Findings</h2>
+ 
+        <div class="highlight-box">
+          <h4 class="h5" style="margin-top: 0;">Explainability does not require sacrificing accuracy</h4>
+          <p>Logistic Regression achieved the highest ROC-AUC at <span class="metric">0.9498</span>, while XGBoost achieved the strongest fixed-threshold classification performance (accuracy <span class="metric">0.85</span>, F1 <span class="metric">0.8302</span>). Simpler, more interpretable models remained competitive with ensemble methods throughout.</p>
+        </div>
+ 
+        <div class="highlight-box">
+          <h4 class="h5" style="margin-top: 0;">Cross-model SHAP agreement was strong but not uniform (RQ1)</h4>
+          <p>Random Forest and XGBoost showed strong SHAP agreement (<span class="metric">Spearman r = 0.835, p &lt; 0.001</span>). Agreement involving Logistic Regression was moderate (r &asymp; 0.63), reflecting the difference between linear and non-linear representations. The most consistently important features were chest pain type, thalassemia, number of major vessels, and ST depression.</p>
+        </div>
+ 
+        <div class="highlight-box">
+          <h4 class="h5" style="margin-top: 0;">Global agreement was high; local agreement was variable (RQ2)</h4>
+          <p>At the global level, SHAP and LIME agreed strongly across all models, with correlations <span class="metric">above 0.93</span>. At the local level, agreement dropped significantly for Logistic Regression to <span class="metric">r = 0.626</span>, meaning two clinicians shown different explanation methods for the same patient could reach different conclusions about why the model flagged them as high risk.</p>
+        </div>
+ 
+        <div class="highlight-box">
+          <h4 class="h5" style="margin-top: 0;">Plain English translation is possible but introduces its own risks (RQ3)</h4>
+          <p>SHAP values were successfully translated into natural language risk statements. However, simplifying a complex output into a sentence requires choices about what to include and how to frame it. Language implies certainty, and in medicine, false certainty is dangerous. The dashboard includes an explicit disclaimer that outputs support clinical judgement rather than replace it.</p>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Technical Implementation</h2>
+ 
+        <h4 class="h5">Models</h4>
+        <ul>
+          <li><strong>Logistic Regression</strong> &mdash; interpretable baseline; LinearSHAP for exact explanations</li>
+          <li><strong>Decision Tree</strong> &mdash; fully transparent rule-based model; Gini importance vs SHAP agreement r = 0.9929</li>
+          <li><strong>Random Forest</strong> &mdash; ensemble model; best cross-validation stability (CV AUC 0.902)</li>
+          <li><strong>XGBoost</strong> &mdash; gradient boosting; strongest fixed-threshold performance</li>
+        </ul>
+        <p>All models evaluated using accuracy, precision, recall, F1, ROC-AUC, and five-fold stratified cross-validation. Class imbalance handled via class weighting throughout.</p>
+ 
+        <h4 class="h5" style="margin-top: 20px;">Explainability</h4>
+        <ul>
+          <li><strong>SHAP</strong> &mdash; TreeSHAP (exact) for tree-based models; LinearSHAP (exact) for Logistic Regression</li>
+          <li><strong>LIME</strong> &mdash; LimeTabularExplainer; discretise_continuous=True for dashboard outputs, False for quantitative comparison</li>
+          <li><strong>Agreement metric</strong> &mdash; Spearman rank correlation at global and local levels across all model-method combinations</li>
+          <li><strong>LIME stability</strong> &mdash; tested across five repeated runs; mean standard deviation of 0.0026 across features</li>
+        </ul>
+ 
+        <h4 class="h5" style="margin-top: 20px;">Dashboard</h4>
+        <ul>
+          <li>Built in Streamlit; loads all trained models and fitted scaler at startup</li>
+          <li>Human-readable input controls (e.g. thalassemia shown as "Normal", "Fixed Defect", "Reversible Defect" rather than numeric codes)</li>
+          <li>Generates predictions, SHAP waterfall plots, LIME bar charts, and plain English summaries in real time</li>
+          <li>Decision Tree view includes full step-by-step decision path in readable clinical rules</li>
+        </ul>
+ 
+        <h4 class="h5" style="margin-top: 20px;">Dataset</h4>
+        <p>UCI Cleveland Heart Disease Dataset &mdash; 297 instances after preprocessing, 13 clinical features, binary classification target. 80/20 stratified train/test split; random seed 42 for reproducibility.</p>
+      </div>
+    </div>
+ 
+    <div class="card white-card">
+      <img src="./assets/images/XAI-dashboard/XAI%20Dashboard.png" alt="Streamlit dashboard showing heart disease prediction with SHAP and LIME explanations" class="project-img">
+      <p style="color: black; text-align: center;">Interactive Streamlit dashboard &mdash; patient input, model predictions, SHAP waterfall, LIME explanations, and plain English summaries</p>
+    </div>
+ 
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Ethics Paper</h2>
+ 
+        <p>A companion 5,000-word ethics paper examines what happens when AI explanation methods are deployed in healthcare settings where the stakes are real.</p>
+ 
+        <p>Topics covered:</p>
+        <ul>
+          <li><strong>Legal accountability</strong> &mdash; when AI contributes to a clinical decision that leads to harm, who is responsible: the clinician, the developer, or the organisation?</li>
+          <li><strong>GDPR and the right to explanation</strong> &mdash; what the regulation actually guarantees, and why it falls short of resolving what a meaningful explanation looks like in practice</li>
+          <li><strong>EU AI Act</strong> &mdash; how healthcare AI systems are classified as high risk, and what obligations this places on developers</li>
+          <li><strong>Automation bias</strong> &mdash; the risk that clinicians defer to AI recommendations even when they conflict with their own judgement, and how explanation design can reinforce this effect</li>
+          <li><strong>Dataset bias</strong> &mdash; the UCI Cleveland dataset was collected in the 1980s from a single clinical population; a model trained on it reflects patterns that may not generalise to modern NHS patients</li>
+          <li><strong>The illusion of understanding</strong> &mdash; SHAP and LIME explain model behaviour, not medical causality; a feature increasing predicted risk does not mean it causes heart disease</li>
+        </ul>
+ 
+        <p style="margin-top: 20px; text-align: center;">
+          <a href="https://github.com/Kapi1243/FYP/blob/main/ethics_paper.pdf" target="_blank" class="btn btn-primary">Read the Ethics Paper (PDF)</a>
+        </p>
+      </div>
+    </div>
+ 
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Technical Skills Demonstrated</h2>
+ 
+        <h4 class="h5">Machine Learning</h4>
+        <ul>
+          <li>Multi-model implementation and comparative evaluation</li>
+          <li>Stratified cross-validation and hyperparameter tuning with GridSearchCV</li>
+          <li>Class imbalance handling via class weighting</li>
+          <li>Data leakage prevention through centralised preprocessing pipeline</li>
+        </ul>
+ 
+        <h4 class="h5" style="margin-top: 15px;">Explainable AI</h4>
+        <ul>
+          <li>SHAP (TreeSHAP, LinearSHAP) at global and local levels</li>
+          <li>LIME for model-agnostic local explanations</li>
+          <li>Spearman rank correlation for quantitative agreement analysis</li>
+          <li>Stability testing across repeated LIME runs</li>
+        </ul>
+ 
+        <h4 class="h5" style="margin-top: 15px;">Research and Communication</h4>
+        <ul>
+          <li>Defined and answered empirical research questions with statistical rigour</li>
+          <li>Translated technical XAI outputs into plain English for non-technical users</li>
+          <li>Authored a 5,000-word ethics paper engaging with GDPR, EU AI Act, and automation bias literature</li>
+        </ul>
+ 
+        <h4 class="h5" style="margin-top: 15px;">Tech Stack</h4>
+        <p>Python &bull; Scikit-learn &bull; XGBoost &bull; SHAP &bull; LIME &bull; Streamlit &bull; Pandas &bull; NumPy &bull; Matplotlib</p>
+      </div>
+    </div>
+ 
+    <div class="card white-card">
+      <div class="card-block">
+        <h4 class="h5" style="color: black; text-align: center; margin-top: 10px;">Why This Project Matters</h4>
+        <p style="color: black; text-align: center; margin: 15px 0;">
+          Predictive accuracy is only half the problem in healthcare AI. This project demonstrates that explanation methods can disagree at the individual level even when they agree on average, and that the design choices made during development embed assumptions about who the system is for and whose experience is treated as the default.
+        </p>
+        <p style="color: black; text-align: center; font-style: italic; margin-top: 15px;">Relevant to roles in AI safety, responsible AI, healthcare AI, and any organisation navigating the EU AI Act or clinical AI deployment.</p>
+        <p style="text-align: center; margin-top: 20px;">
+          <a href="index.html" class="btn btn-secondary">Back to Projects</a>
+        </p>
+      </div>
+    </div>
+ 
+  </main>
+ 
+</body>
+ 
+</html>
