@@ -108,7 +108,7 @@
     <div class="card">
       <div class="card-block">
         <h2 style="color: black; text-align: center;">Short Overview</h2>
-        <p>I built an end-to-end OSINT threat-intelligence prototype that collects public security articles, cleans and deduplicates them, classifies each item into threat categories, extracts entities such as CVEs and organisations, and assigns a configurable 0-100 risk score. The system includes a Streamlit dashboard for analyst review, showing high-risk items, CVE/entity trends, article-level explanations, source reliability, and manual override controls.</p>
+        <p>I built and containerised an end-to-end OSINT threat-intelligence system that collects public security articles, cleans and deduplicates them, classifies each item into threat categories, extracts entities such as CVEs and organisations, and assigns a configurable 0–100 risk score. The application is packaged with Docker for reproducible deployment and includes a Streamlit dashboard for analyst review, risk monitoring, explainability, and manual override controls.</p>
 
         <p style="text-align: center; margin-top: 20px; margin-bottom: 10px;">
           <a href="index.html" class="btn btn-secondary">Back to Projects</a>
@@ -145,8 +145,20 @@
     <div class="card">
       <div class="card-block">
         <h2 style="color: black;">Tech Stack</h2>
-        <p>Python, Streamlit, SQLite, Scikit-learn, Pandas, TF-IDF, NLP, RSS/public security feeds</p>
+        <p>Python, Docker, Streamlit, SQLite, Scikit-learn, Pandas, TF-IDF, NLP, RSS/public security feeds</p>
         <p style="margin-top: 10px;"><strong>Optional/Extended Components:</strong> spaCy, Hugging Face, BeautifulSoup, APScheduler, Plotly</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-block">
+        <h2 style="color: black;">Deployment</h2>h2>
+        <p>
+          The application was containerised using Docker, allowing the NLP pipeline,
+          classification model, dashboard, and dependencies to be packaged into a
+          reproducible deployment environment. This ensures consistent behaviour
+          across development and production systems without manual dependency setup.
+        </p>
       </div>
     </div>
 
@@ -155,7 +167,7 @@
         <h2 style="color: black;">Architecture</h2>
         <p>Pipeline flow:</p>
         <div class="flow-box">
-          Public Security Feeds -> Ingestion -> Cleaning &amp; Deduplication -> SQLite Storage -> NLP Classification -> Entity Extraction -> Risk Scoring -> Streamlit Dashboard -> Human Review
+          Public Security Feeds -> Ingestion & Deduplication -> SQLite Storage -> NLP Classification & Entity Extraction -> Risk Scoring Engine -> Streamlit Dashboard -> Human Review Layer -> Docker Deployment
         </div>
       </div>
     </div>
@@ -199,8 +211,7 @@
       <div class="card-block" style="text-align: center;">
         <h2 style="color: black;">Project Links</h2>
         <div class="cta-row">
-          <a href="https://github.com/Kapi1243/OSINT_Dasboard" class="btn btn-primary" target="_blank">View GitHub Repository</a>
-          <a href="#" class="btn btn-default">Read Technical README</a>
+          <a href="https://github.com/Kapi1243/OSINT_Dashboard" class="btn btn-primary" target="_blank">View GitHub Repository</a>
         </div>
         <p class="note">Update the Technical README link once finalised.</p>
         <p style="margin-top: 20px;"><a href="index.html" class="btn btn-secondary">Back to Projects</a></p>
